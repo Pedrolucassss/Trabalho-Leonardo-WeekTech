@@ -460,7 +460,7 @@ footer {
 }
 .chat-bubble .notif {
   position: absolute; top: 4px; right: 4px;
-  width: 14px; height: 14px; background: #ADEBB3;
+  width: 14px; height: 14px; background: #80EF80;
   border-radius: 50%; border: 2px solid var(--bg);
   animation: blink 1.5s infinite;
 }
