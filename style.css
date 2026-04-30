@@ -450,16 +450,17 @@ footer {
 .chat-bubble {
   position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
   width: 60px; height: 60px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  background: linear-gradient(135deg, #2E3E58, #4D7493);
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; border: none; font-size: 1.4rem; color: #fff;
-  box-shadow: 0 0 30px rgba(0,90,169,0.4);
+  box-shadow: 0 0 30px rgba(77,116,147,0.5);
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.chat-bubble:hover { transform: scale(1.1); box-shadow: 0 0 40px rgba(0,177,255,0.4); }
+.chat-bubble:hover { transform: scale(1.1); box-shadow: 0 0 40px rgba(77,116,147,0.8); 
+}
 .chat-bubble .notif {
   position: absolute; top: 4px; right: 4px;
-  width: 14px; height: 14px; background: var(--accent3);
+  width: 14px; height: 14px; background: #ADEBB3;
   border-radius: 50%; border: 2px solid var(--bg);
   animation: blink 1.5s infinite;
 }
@@ -476,7 +477,7 @@ footer {
 .chat-panel.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
 
 .chat-header {
-  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  background: linear-gradient(135deg, #2E3E58, #4D7493);
   padding: 1rem 1.2rem; display: flex; align-items: center; gap: 0.75rem;
 }
 .chat-avatar {
