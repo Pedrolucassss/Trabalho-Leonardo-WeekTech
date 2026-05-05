@@ -1,576 +1,563 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Week — UniCesumar Londrina</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav id="navbar" style="background: rgba(2, 17, 36, 0.95);">
-  <a href="#" class="nav-logo">
-    <img src="unicesumar.png" alt="UniCesumar" class="nav-unicesumar-logo">
-    Tech<span>Week</span>
-  </a>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#programacao">Programação</a></li>
-    <li><a href="#palestrantes">Palestrantes</a></li>
-    <li><a href="#projetos">Projetos</a></li>
-    <li><a href="#inscricao">Inscrição</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#local">Local</a></li>
-  </ul>
-  <a href="#inscricao" class="nav-cta">Inscreva-se</a>
-  <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fas fa-bars"></i></button>
-</nav>
+  <!-- NAV -->
+  <nav id="navbar" style="background: rgba(2, 17, 36, 0.95);">
+    <a href="#" class="nav-logo">
+      <img src="unicesumar.png" alt="UniCesumar" class="nav-unicesumar-logo">
+      Tech<span>Week</span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#programacao">Programação</a></li>
+      <li><a href="#palestrantes">Palestrantes</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#inscricao">Inscrição</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#local">Local</a></li>
+    </ul>
+    <a href="#inscricao" class="nav-cta">Inscreva-se</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-glow"></div>
-  <div style="position:relative;z-index:1;">
-    <div class="hero-badge">LONDRINA 2026 — UNICESUMAR</div>
-    <h1>
-      <span class="line1">TECH</span>
-      <span class="line2">WEEK</span>
-    </h1>
-    <p class="hero-sub">O maior evento de tecnologia da UniCesumar Londrina. Palestras, workshops, projetos e networking em uma semana épica.</p>
-    <div class="hero-date">
-      <i class="fas fa-calendar-alt"></i>
-      <span>14 a 18 de Outubro, 2026</span>
-      <i class="fas fa-map-marker-alt"></i>
-      <span>Londrina — PR</span>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div style="position:relative;z-index:1;">
+      <div class="hero-badge">LONDRINA 2026 — UNICESUMAR</div>
+      <h1>
+        <span class="line1">TECH</span>
+        <span class="line2">WEEK</span>
+      </h1>
+      <p class="hero-sub">O maior evento de tecnologia da UniCesumar Londrina. Palestras, workshops, projetos e
+        networking em uma semana épica.</p>
+      <div class="hero-date">
+        <i class="fas fa-calendar-alt"></i>
+        <span>1 a 3 de Junho, 2026</span>
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Londrina — PR</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#inscricao" class="btn-primary"><i class="fas fa-rocket" style="margin-right:.5rem;"></i>Quero
+          Participar</a>
+        <a href="#programacao" class="btn-secondary">Ver Programação</a>
+      </div>
     </div>
-    <div class="hero-btns">
-      <a href="#inscricao" class="btn-primary"><i class="fas fa-rocket" style="margin-right:.5rem;"></i>Quero Participar</a>
-      <a href="#programacao" class="btn-secondary">Ver Programação</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat-item">
-    <div class="stat-num" data-target="12">12+</div>
-    <div class="stat-label">PALESTRAS</div>
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num" data-target="12">12+</div>
+      <div class="stat-label">PALESTRAS</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="3">3+</div>
+      <div class="stat-label">DIAS</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="8">8+</div>
+      <div class="stat-label">WORKSHOPS</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="500">500+</div>
+      <div class="stat-label">VAGAS</div>
+    </div>
   </div>
-  <div class="stat-item">
-    <div class="stat-num" data-target="5">5+</div>
-    <div class="stat-label">DIAS</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num" data-target="8">8+</div>
-    <div class="stat-label">WORKSHOPS</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num" data-target="500">500+</div>
-    <div class="stat-label">VAGAS</div>
-  </div>
-</div>
 
-<!-- PROGRAMAÇÃO -->
-<section id="programacao" class="section-pad">
-  <div class="container">
-    <div class="section-head">
-      <h2>Programação</h2>
-      <p>Agenda completa da semana com horários, palestrantes e atividades.</p>
-    </div>
-    <div class="schedule-list">
-      <div class="schedule-item">
-        <div class="schedule-time">SEG<br>09:00</div>
-        <div>
-          <div class="schedule-title">Cerimônia de Abertura — Tech Week 2026</div>
-          <div class="schedule-speaker">Coord. do Curso de Engenharia de Software</div>
-          <span class="schedule-tag tag-abertura">ABERTURA</span>
-        </div>
+  <!-- PROGRAMAÇÃO -->
+  <section id="programacao" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <h2>Programação</h2>
+        <p>Agenda completa da semana com horários, palestrantes e atividades.</p>
       </div>
-      <div class="schedule-item">
-        <div class="schedule-time">SEG<br>10:00</div>
-        <div>
-          <div class="schedule-title">Inteligência Artificial no Mercado de Trabalho</div>
-          <div class="schedule-speaker">Dr. Carlos Mendes — Tech Lead Google Brasil</div>
-          <span class="schedule-tag tag-palestra">PALESTRA</span>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">TER<br>09:00</div>
-        <div>
-          <div class="schedule-title">Workshop: Desenvolvimento Full Stack com React e Node</div>
-          <div class="schedule-speaker">Ana Paula Ferreira — Senior Dev Nubank</div>
-          <span class="schedule-tag tag-workshop">WORKSHOP</span>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">TER<br>14:00</div>
-        <div>
-          <div class="schedule-title">Coffee Break &amp; Networking</div>
-          <div class="schedule-speaker">Todos os participantes — Área de Convivência</div>
-          <span class="schedule-tag tag-coffee">COFFEE BREAK</span>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">QUA<br>10:00</div>
-        <div>
-          <div class="schedule-title">Segurança da Informação: Ameaças e Defesas em 2026</div>
-          <div class="schedule-speaker">Rafael Costa — CISO Itaú Unibanco</div>
-          <span class="schedule-tag tag-palestra">PALESTRA</span>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">QUI<br>09:00</div>
-        <div>
-          <div class="schedule-title">Apresentação de Projetos dos Alunos</div>
-          <div class="schedule-speaker">Alunos UniCesumar — Auditório Principal</div>
-          <span class="schedule-tag tag-abertura">PROJETOS</span>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">SEX<br>09:00</div>
-        <div>
-          <div class="schedule-title">Painel: Carreira em Tech — Como se destacar?</div>
-          <div class="schedule-speaker">Mesa redonda com 4 profissionais convidados</div>
-          <span class="schedule-tag tag-palestra">PALESTRA</span>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">SEX<br>16:00</div>
-        <div>
-          <div class="schedule-title">Encerramento &amp; Premiação dos Melhores Projetos</div>
-          <div class="schedule-speaker">Direção UniCesumar Londrina</div>
-          <span class="schedule-tag tag-abertura">ENCERRAMENTO</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PALESTRANTES -->
-<section id="palestrantes" class="section-pad">
-  <div class="container">
-    <div class="section-head">
-      <h2>Palestrantes</h2>
-      <p>Profissionais de referência do mercado de tecnologia nacional.</p>
-    </div>
-    <div class="speakers-grid">
-      <div class="speaker-card">
-        <div class="speaker-avatar" style="background:linear-gradient(135deg,#005AA9,#00B1FF)">CM</div>
-        <div class="speaker-name">Dr. Carlos Mendes</div>
-        <div class="speaker-role">Tech Lead — Google Brasil</div>
-        <div class="speaker-topic">IA &amp; Futuro do Trabalho</div>
-      </div>
-      <div class="speaker-card">
-        <div class="speaker-avatar" style="background:linear-gradient(135deg,#FFCC00,#005AA9)">AF</div>
-        <div class="speaker-name">Ana Paula Ferreira</div>
-        <div class="speaker-role">Senior Dev — Nubank</div>
-        <div class="speaker-topic">Full Stack com React &amp; Node</div>
-      </div>
-      <div class="speaker-card">
-        <div class="speaker-avatar" style="background:linear-gradient(135deg,#10b981,#00B1FF)">RC</div>
-        <div class="speaker-name">Rafael Costa</div>
-        <div class="speaker-role">CISO — Itaú Unibanco</div>
-        <div class="speaker-topic">Segurança da Informação</div>
-      </div>
-      <div class="speaker-card">
-        <div class="speaker-avatar" style="background:linear-gradient(135deg,#FFCC00,#005AA9)">LS</div>
-        <div class="speaker-name">Letícia Santos</div>
-        <div class="speaker-role">Product Manager — iFood</div>
-        <div class="speaker-topic">Carreira em Produtos Digitais</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJETOS -->
-<section id="projetos" class="section-pad">
-  <div class="container">
-    <div class="section-head">
-      <h2>Projetos dos Alunos</h2>
-      <p>Iniciativas criadas pelos alunos que serão apresentadas durante o evento.</p>
-    </div>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-icon">🤖</div>
-        <div class="project-title">AgriBot — IA para Agricultura</div>
-        <div class="project-team">João Silva, Maria Santos — ADS 4° Sem.</div>
-        <div class="project-desc">Sistema de IA para monitoramento de lavouras com análise preditiva de pragas e doenças usando visão computacional.</div>
-      </div>
-      <div class="project-card">
-        <div class="project-icon">💊</div>
-        <div class="project-title">MedAlert — Lembretes Medicação</div>
-        <div class="project-team">Pedro Lima, Ana Costa — SI 6° Sem.</div>
-        <div class="project-desc">Aplicativo mobile que gerencia rotinas de medicação para idosos, com alertas inteligentes e relatórios para cuidadores.</div>
-      </div>
-      <div class="project-card">
-        <div class="project-icon">♻️</div>
-        <div class="project-title">EcoMap — Reciclagem Inteligente</div>
-        <div class="project-team">Lucas Rocha, Sofia Neves — CC 5° Sem.</div>
-        <div class="project-desc">Plataforma que mapeia pontos de coleta seletiva e gamifica a reciclagem para engajar a comunidade de Londrina.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PATROCINADORES -->
-<section id="patrocinadores" class="section-pad">
-  <div class="container">
-    <div class="section-head">
-      <h2>Patrocinadores</h2>
-      <p>Empresas que acreditam no futuro da tecnologia e apoiam nosso evento.</p>
-    </div>
-    <div class="sponsors-row">
-      <div class="sponsor-box gold">⭐ SOFTPLAN</div>
-      <div class="sponsor-box gold">⭐ TOTVS</div>
-      <div class="sponsor-box silver">SICREDI</div>
-      <div class="sponsor-box silver">SERASA EXPERIAN</div>
-      <div class="sponsor-box">SEBRAE-PR</div>
-      <div class="sponsor-box">ACIL</div>
-    </div>
-  </div>
-</section>
-
-<!-- INSCRIÇÃO -->
-<section id="inscricao" class="section-pad">
-  <div class="container">
-    <div class="section-head">
-      <h2>Inscrições</h2>
-      <p>Escolha o tipo de inscrição que se aplica a você.</p>
-    </div>
-    <div class="forms-tabs">
-      <button class="tab-btn active" onclick="switchTab('participante')">👤 Participante</button>
-      <button class="tab-btn" onclick="switchTab('palestrante')">🎤 Palestrante</button>
-      <button class="tab-btn" onclick="switchTab('projeto')">💡 Projeto</button>
-    </div>
-
-    <!-- PARTICIPANTE -->
-    <div class="tab-panel active" id="tab-participante">
-      <div class="form-wrap">
-        <h3>Inscrição de Participante</h3>
-        <p>Preencha seus dados para garantir sua vaga na Tech Week 2026.</p>
-        <div class="form-grid">
-          <div class="form-full">
-            <label>NOME COMPLETO</label>
-            <input type="text" id="part-nome" placeholder="Seu nome completo">
-          </div>
+      <div class="schedule-list">
+        <div class="schedule-item">
+          <div class="schedule-time">SEG<br>19:00</div>
           <div>
-            <label>RA (REGISTRO ACADÊMICO)</label>
-            <input type="text" id="part-ra" placeholder="Ex: 12345678">
+            <div class="schedule-title">Cerimônia de Abertura — Tech Week 2026</div>
+            <div class="schedule-speaker">Coord. do Curso de Engenharia de Software</div>
+            <span class="schedule-tag tag-abertura">ABERTURA</span>
           </div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">TER<br>19:00</div>
+          <div>
+            <div class="schedule-title">Workshop: Desenvolvimento Full Stack com React e Node</div>
+            <div class="schedule-speaker">Ana Paula Ferreira — Senior Dev Nubank</div>
+            <span class="schedule-tag tag-workshop">WORKSHOP</span>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">QUA<br>10:00</div>
+          <div>
+            <div class="schedule-title">Segurança da Informação: Ameaças e Defesas em 2026</div>
+            <div class="schedule-speaker">Rafael Costa — CISO Itaú Unibanco</div>
+            <span class="schedule-tag tag-palestra">PALESTRA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PALESTRANTES -->
+  <section id="palestrantes" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <h2>Palestrantes</h2>
+        <p>Profissionais de referência do mercado de tecnologia nacional.</p>
+      </div>
+      <div class="speakers-grid">
+        <div class="speaker-card">
+          <div class="speaker-avatar" style="background:linear-gradient(135deg,#005AA9,#00B1FF)">CM</div>
+          <div class="speaker-name">Dr. Carlos Mendes</div>
+          <div class="speaker-role">Tech Lead — Google Brasil</div>
+          <div class="speaker-topic">IA &amp; Futuro do Trabalho</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-avatar" style="background:linear-gradient(135deg,#FFCC00,#005AA9)">AF</div>
+          <div class="speaker-name">Ana Paula Ferreira</div>
+          <div class="speaker-role">Senior Dev — Nubank</div>
+          <div class="speaker-topic">Full Stack com React &amp; Node</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-avatar" style="background:linear-gradient(135deg,#10b981,#00B1FF)">RC</div>
+          <div class="speaker-name">Rafael Costa</div>
+          <div class="speaker-role">CISO — Itaú Unibanco</div>
+          <div class="speaker-topic">Segurança da Informação</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-avatar" style="background:linear-gradient(135deg,#FFCC00,#005AA9)">LS</div>
+          <div class="speaker-name">Letícia Santos</div>
+          <div class="speaker-role">Product Manager — iFood</div>
+          <div class="speaker-topic">Carreira em Produtos Digitais</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <h2>Projetos dos Alunos</h2>
+        <p>Iniciativas criadas pelos alunos que serão apresentadas durante o evento.</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-icon">🤖</div>
+          <div class="project-title">AgriBot — IA para Agricultura</div>
+          <div class="project-team">João Silva, Maria Santos — ADS 4° Sem.</div>
+          <div class="project-desc">Sistema de IA para monitoramento de lavouras com análise preditiva de pragas e
+            doenças usando visão computacional.</div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon">💊</div>
+          <div class="project-title">MedAlert — Lembretes Medicação</div>
+          <div class="project-team">Pedro Lima, Ana Costa — SI 6° Sem.</div>
+          <div class="project-desc">Aplicativo mobile que gerencia rotinas de medicação para idosos, com alertas
+            inteligentes e relatórios para cuidadores.</div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon">♻️</div>
+          <div class="project-title">EcoMap — Reciclagem Inteligente</div>
+          <div class="project-team">Lucas Rocha, Sofia Neves — CC 5° Sem.</div>
+          <div class="project-desc">Plataforma que mapeia pontos de coleta seletiva e gamifica a reciclagem para engajar
+            a comunidade de Londrina.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATROCINADORES -->
+  <section id="patrocinadores" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <h2>Patrocinadores</h2>
+        <p>Empresas que acreditam no futuro da tecnologia e apoiam nosso evento.</p>
+      </div>
+      <div class="sponsors-row">
+        <div class="sponsor-box gold">⭐⭐⭐ CACO</div>
+        <div class="sponsor-box gold">⭐ TOTVS</div>
+        <div class="sponsor-box silver">SICREDI</div>
+        <div class="sponsor-box silver">SERASA EXPERIAN</div>
+        <div class="sponsor-box">SEBRAE-PR</div>
+        <div class="sponsor-box">ACIL</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSCRIÇÃO -->
+  <section id="inscricao" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <h2>Inscrições</h2>
+        <p>Escolha o tipo de inscrição que se aplica a você.</p>
+      </div>
+      <div class="forms-tabs">
+        <button class="tab-btn active" onclick="switchTab('participante')">👤 Participante</button>
+        <button class="tab-btn" onclick="switchTab('palestrante')">🎤 Palestrante</button>
+        <button class="tab-btn" onclick="switchTab('projeto')">💡 Projeto</button>
+      </div>
+
+      <!-- PARTICIPANTE -->
+      <div class="tab-panel active" id="tab-participante">
+        <div class="form-wrap">
+          <h3>Inscrição de Participante</h3>
+          <p>Preencha seus dados para garantir sua vaga na Tech Week 2026.</p>
+          <div class="form-grid">
+            <div class="form-full">
+              <label>NOME COMPLETO</label>
+              <input type="text" id="part-nome" placeholder="Seu nome completo">
+            </div>
+            <div>
+              <label>RA (REGISTRO ACADÊMICO)</label>
+              <input type="text" id="part-ra" placeholder="Ex: 12345678">
+            </div>
+            <div>
+              <label>E-MAIL</label>
+              <input type="email" id="part-email" placeholder="seu@email.com">
+            </div>
+            <div>
+              <label>CURSO</label>
+              <select id="part-curso">
+                <option value="">Selecione seu curso</option>
+                <option>Análise e Desenvolvimento de Sistemas</option>
+                <option>Ciência da Computação</option>
+                <option>Sistemas de Informação</option>
+                <option>Engenharia de Software</option>
+                <option>Outros</option>
+              </select>
+            </div>
+            <div>
+              <label>SEMESTRE</label>
+              <select id="part-semestre">
+                <option value="">Selecione</option>
+                <option>1° Semestre</option>
+                <option>2° Semestre</option>
+                <option>3° Semestre</option>
+                <option>4° Semestre</option>
+                <option>5° Semestre</option>
+                <option>6° Semestre</option>
+                <option>7° Semestre</option>
+                <option>8° Semestre</option>
+              </select>
+            </div>
+            <div class="form-full">
+              <label class="checkbox-row coffee-checkbox">
+                <input type="checkbox" id="coffee" onchange="handleCoffeeChange(this)">
+                <span>☕ Quero participar do <strong>Coffee Break</strong></span>
+              </label>
+            </div>
+          </div>
+          <button class="form-submit" onclick="submitParticipante()">Confirmar Inscrição</button>
+        </div>
+      </div>
+
+      <!-- PALESTRANTE -->
+      <div class="tab-panel" id="tab-palestrante">
+        <div class="form-wrap">
+          <h3>Inscrição de Palestrante</h3>
+          <p>Compartilhe seu conhecimento com os alunos da UniCesumar Londrina.</p>
+          <div class="form-grid">
+            <div>
+              <label>NOME COMPLETO</label>
+              <input type="text" id="pal-nome" placeholder="Seu nome completo">
+            </div>
+            <div>
+              <label>TELEFONE</label>
+              <input type="tel" id="pal-tel" placeholder="(43) 99999-9999">
+            </div>
+            <div class="form-full">
+              <label>E-MAIL</label>
+              <input type="email" id="pal-email" placeholder="seu@email.com">
+            </div>
+            <div class="form-full">
+              <label>TEMA DA PALESTRA</label>
+              <input type="text" id="pal-tema" placeholder="Ex: Inteligência Artificial aplicada ao Agronegócio">
+            </div>
+            <div class="form-full">
+              <label>BRIEFING — O QUE SERÁ APRESENTADO</label>
+              <textarea id="pal-briefing"
+                placeholder="Descreva os tópicos que serão abordados na sua palestra..."></textarea>
+            </div>
+            <div class="form-full">
+              <label>CURRÍCULO / LINKEDIN</label>
+              <input type="text" id="pal-curriculo" placeholder="Link do LinkedIn ou resumo do currículo">
+            </div>
+            <div class="form-full">
+              <label>TEMPO NECESSÁRIO (40 a 60 minutos)</label>
+              <select id="pal-tempo">
+                <option value="">Selecione o tempo</option>
+                <option>40 minutos</option>
+                <option>45 minutos</option>
+                <option>50 minutos</option>
+                <option>55 minutos</option>
+                <option>60 minutos</option>
+              </select>
+            </div>
+          </div>
+          <button class="form-submit" onclick="submitPalestrante()">Enviar Proposta</button>
+        </div>
+      </div>
+
+      <!-- PROJETO -->
+      <div class="tab-panel" id="tab-projeto">
+        <div class="form-wrap">
+          <h3>Cadastro de Projeto</h3>
+          <p>Apresente seu projeto na Tech Week e concorra a prêmios especiais.</p>
+          <div class="form-grid">
+            <div>
+              <label>NOME DO RESPONSÁVEL</label>
+              <input type="text" id="proj-nome-resp" placeholder="Seu nome completo">
+            </div>
+            <div>
+              <label>RA DO RESPONSÁVEL</label>
+              <input type="text" id="proj-ra" placeholder="Ex: 12345678">
+            </div>
+            <div class="form-full">
+              <label>NOME DO PROJETO</label>
+              <input type="text" id="proj-nome" placeholder="Nome do seu projeto">
+            </div>
+            <div class="form-full">
+              <label>DESCRIÇÃO DO PROJETO</label>
+              <textarea id="proj-desc"
+                placeholder="Descreva seu projeto: problema que resolve, tecnologias usadas, impacto esperado..."></textarea>
+            </div>
+          </div>
+          <button class="form-submit" onclick="submitProjeto()">Cadastrar Projeto</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <h2>Perguntas Frequentes</h2>
+        <p>Tire suas dúvidas sobre o evento.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>A Tech Week é aberta para todos os alunos?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-a">Sim! Todos os alunos matriculados na UniCesumar Londrina podem participar. Basta fazer sua
+            inscrição pelo site antes das vagas esgotarem.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Como confirmar minha presença nas palestras?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-a">Ao final de cada palestra, um QR Code será exibido para você escanear e confirmar sua
+            presença. Essa confirmação é necessária para receber o certificado de participação.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>O evento é gratuito?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-a">Sim, a Tech Week é totalmente gratuita para alunos da UniCesumar Londrina. A inscrição é
+            obrigatória pois as vagas são limitadas.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Posso me inscrever em todas as atividades?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-a">Você pode se inscrever em quantas atividades quiser, desde que não haja conflito de
+            horário. Workshops têm vagas limitadas e são por ordem de inscrição.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Posso apresentar um projeto mesmo que não esteja finalizado?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-a">Sim! Projetos em andamento são bem-vindos. O importante é ter uma ideia clara do problema
+            que você está resolvendo e um protótipo ou demonstração do que foi desenvolvido até o momento.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Haverá certificado de participação?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-a">Sim! Os participantes que confirmarem presença em pelo menos 3 atividades receberão
+            certificado digital de participação, emitido pela UniCesumar.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCAL -->
+  <section id="local" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <h2>Onde Acontece</h2>
+      </div>
+      <div class="location-wrap">
+        <div class="location-info">
+          <h3>UniCesumar<br>Londrina</h3>
+          <p>O evento acontece no campus principal da UniCesumar em Londrina, Paraná. Toda a infraestrutura está
+            preparada para receber você.</p>
+          <div class="location-detail">
+            <i class="fas fa-map-marker-alt"></i>
+            <span> Av. Santa Mônica, 450 - Franca, Londrina - PR</span>
+          </div>
+          <div class="location-detail">
+            <i class="fas fa-building"></i>
+            <span>Auditório Principal + Salas de Workshop</span>
+          </div>
+          <div class="location-detail">
+            <i class="fas fa-car"></i>
+            <span>Estacionamento gratuito disponível</span>
+          </div>
+          <div class="location-detail">
+            <i class="fas fa-clock"></i>
+            <span>1 a 3 de Junho, 2026 — 19h às 22h</span>
+          </div>
+        </div>
+        <div class="map-placeholder">
+          <i class="fas fa-map-marked-alt"></i>
+          <p>UniCesumar Londrina</p>
+          <p style="font-size:.75rem;">Av. Guedner, 1610</p>
+          <a href="https://maps.google.com/?q=UniCesumar+Londrina" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Abrir no Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMIN -->
+  <section id="admin" class="section-pad" style="background:var(--bg2);">
+    <div class="container">
+      <div class="section-head">
+        <h2>Área Administrativa</h2>
+        <p>Acesso restrito para coordenadores do evento.</p>
+      </div>
+      <div class="admin-wrap">
+        <div class="admin-icon">🔐</div>
+        <h3>Login Administrativo</h3>
+        <p>Gerencie inscrições, selecione palestras e acompanhe métricas em tempo real.</p>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
           <div>
             <label>E-MAIL</label>
-            <input type="email" id="part-email" placeholder="seu@email.com">
+            <input type="email" id="admin-email" placeholder="admin@unicesumar.edu.br">
           </div>
           <div>
-            <label>CURSO</label>
-            <select id="part-curso">
-              <option value="">Selecione seu curso</option>
-              <option>Análise e Desenvolvimento de Sistemas</option>
-              <option>Ciência da Computação</option>
-              <option>Sistemas de Informação</option>
-              <option>Engenharia de Software</option>
-              <option>Outros</option>
-            </select>
+            <label>SENHA</label>
+            <input type="password" id="admin-senha" placeholder="••••••••">
           </div>
-          <div>
-            <label>SEMESTRE</label>
-            <select id="part-semestre">
-              <option value="">Selecione</option>
-              <option>1° Semestre</option>
-              <option>2° Semestre</option>
-              <option>3° Semestre</option>
-              <option>4° Semestre</option>
-              <option>5° Semestre</option>
-              <option>6° Semestre</option>
-              <option>7° Semestre</option>
-              <option>8° Semestre</option>
-            </select>
-          </div>
-          <div class="form-full">
-            <label class="checkbox-row coffee-checkbox">
-              <input type="checkbox" id="coffee">
-              <span>☕ Quero participar do <strong>Coffee Break</strong></span>
-            </label>
-          </div>
+          <button class="form-submit" onclick="loginAdmin()">Entrar no Painel</button>
         </div>
-        <button class="form-submit" onclick="submitParticipante()">Confirmar Inscrição</button>
       </div>
     </div>
+  </section>
 
-    <!-- PALESTRANTE -->
-    <div class="tab-panel" id="tab-palestrante">
-      <div class="form-wrap">
-        <h3>Inscrição de Palestrante</h3>
-        <p>Compartilhe seu conhecimento com os alunos da UniCesumar Londrina.</p>
-        <div class="form-grid">
-          <div>
-            <label>NOME COMPLETO</label>
-            <input type="text" id="pal-nome" placeholder="Seu nome completo">
-          </div>
-          <div>
-            <label>TELEFONE</label>
-            <input type="tel" id="pal-tel" placeholder="(43) 99999-9999">
-          </div>
-          <div class="form-full">
-            <label>E-MAIL</label>
-            <input type="email" id="pal-email" placeholder="seu@email.com">
-          </div>
-          <div class="form-full">
-            <label>TEMA DA PALESTRA</label>
-            <input type="text" id="pal-tema" placeholder="Ex: Inteligência Artificial aplicada ao Agronegócio">
-          </div>
-          <div class="form-full">
-            <label>BRIEFING — O QUE SERÁ APRESENTADO</label>
-            <textarea id="pal-briefing" placeholder="Descreva os tópicos que serão abordados na sua palestra..."></textarea>
-          </div>
-          <div class="form-full">
-            <label>CURRÍCULO / LINKEDIN</label>
-            <input type="text" id="pal-curriculo" placeholder="Link do LinkedIn ou resumo do currículo">
-          </div>
-          <div class="form-full">
-            <label>TEMPO NECESSÁRIO (40 a 60 minutos)</label>
-            <select id="pal-tempo">
-              <option value="">Selecione o tempo</option>
-              <option>40 minutos</option>
-              <option>45 minutos</option>
-              <option>50 minutos</option>
-              <option>55 minutos</option>
-              <option>60 minutos</option>
-            </select>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo" style="font-size:1.4rem;">
+            <img src="unicesumar.png" alt="UniCesumar" class="nav-unicesumar-logo">
+            Tech<span style="color:var(--accent)">Week</span>
+          </a>
+          <p>O maior evento de tecnologia da UniCesumar Londrina. Uma semana inteira dedicada à inovação, aprendizado e
+            networking.</p>
+          <div class="social-links" style="margin-top:1.5rem;">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
           </div>
         </div>
-        <button class="form-submit" onclick="submitPalestrante()">Enviar Proposta</button>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href="#programacao">Programação</a>
+          <a href="#palestrantes">Palestrantes</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#patrocinadores">Patrocinadores</a>
+        </div>
+        <div class="footer-col">
+          <h4>Participar</h4>
+          <a href="#inscricao">Inscrição Participante</a>
+          <a href="#inscricao">Inscrição Palestrante</a>
+          <a href="#inscricao">Cadastro de Projeto</a>
+          <a href="#faq">FAQ</a>
+          <a href="#local">Local &amp; Mapa</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Tech Week — UniCesumar Londrina. Todos os direitos reservados.</span>
+        <span>Desenvolvido pelos alunos de Analise e Desenvolvimento de Sistemas e Engenharia de Software da UniCesumar
+          Londrina</span>
       </div>
     </div>
+  </footer>
 
-    <!-- PROJETO -->
-    <div class="tab-panel" id="tab-projeto">
-      <div class="form-wrap">
-        <h3>Cadastro de Projeto</h3>
-        <p>Apresente seu projeto na Tech Week e concorra a prêmios especiais.</p>
-        <div class="form-grid">
-          <div>
-            <label>NOME DO RESPONSÁVEL</label>
-            <input type="text" id="proj-nome-resp" placeholder="Seu nome completo">
-          </div>
-          <div>
-            <label>RA DO RESPONSÁVEL</label>
-            <input type="text" id="proj-ra" placeholder="Ex: 12345678">
-          </div>
-          <div class="form-full">
-            <label>NOME DO PROJETO</label>
-            <input type="text" id="proj-nome" placeholder="Nome do seu projeto">
-          </div>
-          <div class="form-full">
-            <label>DESCRIÇÃO DO PROJETO</label>
-            <textarea id="proj-desc" placeholder="Descreva seu projeto: problema que resolve, tecnologias usadas, impacto esperado..."></textarea>
-          </div>
-        </div>
-        <button class="form-submit" onclick="submitProjeto()">Cadastrar Projeto</button>
+  <!-- CHATBOT -->
+  <button class="chat-bubble" id="chat-toggle" onclick="toggleChat()" aria-label="Abrir chatbot">
+    <i class="fas fa-robot"></i>
+    <span class="notif" style="display: block;"></span>
+  </button>
+
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-header">
+      <div class="chat-avatar">🤖</div>
+      <div class="chat-header-info">
+        <strong>TechBot</strong>
+        <span>Assistente da Tech Week</span>
+      </div>
+      <button class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-footer">
+      <input class="chat-input" id="chat-input" placeholder="Pergunte sobre o evento..."
+        onkeydown="if(event.key==='Enter')sendMessage()">
+      <button class="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <!-- COFFEE MODAL -->
+  <div class="modal-overlay" id="coffee-modal">
+    <div class="modal-box">
+      <h3>Aviso Importante! ☕</h3>
+      <p>O Coffee Break é um momento especial para networking, e para que ele aconteça, cobramos um valor simbólico de
+        participação.</p>
+      <p>Ao marcar esta opção, você <strong>se compromete a ajudar a pagar</strong> por essa taxa juntamente com os
+        demais.</p>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="cancelCoffee()">Cancelar</button>
+        <button class="btn-primary" onclick="confirmCoffee()">Eu concordo</button>
       </div>
     </div>
   </div>
-</section>
 
-<!-- FAQ -->
-<section id="faq" class="section-pad">
-  <div class="container">
-    <div class="section-head">
-      <h2>Perguntas Frequentes</h2>
-      <p>Tire suas dúvidas sobre o evento.</p>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>A Tech Week é aberta para todos os alunos?</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-a">Sim! Todos os alunos matriculados na UniCesumar Londrina podem participar. Basta fazer sua inscrição pelo site antes das vagas esgotarem.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Como confirmar minha presença nas palestras?</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-a">Ao final de cada palestra, um QR Code será exibido para você escanear e confirmar sua presença. Essa confirmação é necessária para receber o certificado de participação.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>O evento é gratuito?</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-a">Sim, a Tech Week é totalmente gratuita para alunos da UniCesumar Londrina. A inscrição é obrigatória pois as vagas são limitadas.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Posso me inscrever em todas as atividades?</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-a">Você pode se inscrever em quantas atividades quiser, desde que não haja conflito de horário. Workshops têm vagas limitadas e são por ordem de inscrição.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Posso apresentar um projeto mesmo que não esteja finalizado?</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-a">Sim! Projetos em andamento são bem-vindos. O importante é ter uma ideia clara do problema que você está resolvendo e um protótipo ou demonstração do que foi desenvolvido até o momento.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Haverá certificado de participação?</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-a">Sim! Os participantes que confirmarem presença em pelo menos 3 atividades receberão certificado digital de participação, emitido pela UniCesumar.</div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
 
-<!-- LOCAL -->
-<section id="local" class="section-pad">
-  <div class="container">
-    <div class="section-head">
-      <h2>Onde Acontece</h2>
-    </div>
-    <div class="location-wrap">
-      <div class="location-info">
-        <h3>UniCesumar<br>Londrina</h3>
-        <p>O evento acontece no campus principal da UniCesumar em Londrina, Paraná. Toda a infraestrutura está preparada para receber você.</p>
-        <div class="location-detail">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Av. Guedner, 1610 — Jardim Aclimação, Maringá, PR</span>
-        </div>
-        <div class="location-detail">
-          <i class="fas fa-building"></i>
-          <span>Auditório Principal + Salas de Workshop</span>
-        </div>
-        <div class="location-detail">
-          <i class="fas fa-car"></i>
-          <span>Estacionamento gratuito disponível</span>
-        </div>
-        <div class="location-detail">
-          <i class="fas fa-clock"></i>
-          <span>14 a 18 de Outubro, 2026 — 08h às 18h</span>
-        </div>
-      </div>
-      <div class="map-placeholder">
-        <i class="fas fa-map-marked-alt"></i>
-        <p>UniCesumar Londrina</p>
-        <p style="font-size:.75rem;">Av. Guedner, 1610</p>
-        <a href="https://maps.google.com/?q=UniCesumar+Londrina" target="_blank">
-          <i class="fas fa-external-link-alt"></i> Abrir no Maps
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ADMIN -->
-<section id="admin" class="section-pad" style="background:var(--bg2);">
-  <div class="container">
-    <div class="section-head">
-      <h2>Área Administrativa</h2>
-      <p>Acesso restrito para coordenadores do evento.</p>
-    </div>
-    <div class="admin-wrap">
-      <div class="admin-icon">🔐</div>
-      <h3>Login Administrativo</h3>
-      <p>Gerencie inscrições, selecione palestras e acompanhe métricas em tempo real.</p>
-      <div style="display:flex;flex-direction:column;gap:1rem;">
-        <div>
-          <label>E-MAIL</label>
-          <input type="email" placeholder="admin@unicesumar.edu.br">
-        </div>
-        <div>
-          <label>SENHA</label>
-          <input type="password" placeholder="••••••••">
-        </div>
-        <button class="form-submit" onclick="submitForm('Funcionalidade administrativa em desenvolvimento.')">Entrar no Painel</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#" class="nav-logo" style="font-size:1.4rem;">
-          <img src="unicesumar.png" alt="UniCesumar" class="nav-unicesumar-logo">
-          Tech<span style="color:var(--accent)">Week</span>
-        </a>
-        <p>O maior evento de tecnologia da UniCesumar Londrina. Uma semana inteira dedicada à inovação, aprendizado e networking.</p>
-        <div class="social-links" style="margin-top:1.5rem;">
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Navegação</h4>
-        <a href="#programacao">Programação</a>
-        <a href="#palestrantes">Palestrantes</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#patrocinadores">Patrocinadores</a>
-      </div>
-      <div class="footer-col">
-        <h4>Participar</h4>
-        <a href="#inscricao">Inscrição Participante</a>
-        <a href="#inscricao">Inscrição Palestrante</a>
-        <a href="#inscricao">Cadastro de Projeto</a>
-        <a href="#faq">FAQ</a>
-        <a href="#local">Local &amp; Mapa</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Tech Week — UniCesumar Londrina. Todos os direitos reservados.</span>
-      <span>Desenvolvido pelos alunos de Engenharia de Software</span>
-    </div>
-  </div>
-</footer>
-
-<!-- CHATBOT -->
-<button class="chat-bubble" id="chat-toggle" onclick="toggleChat()" aria-label="Abrir chatbot">
-  <i class="fas fa-robot"></i>
-  <span class="notif" style="display: block;"></span>
-</button>
-
-<div class="chat-panel" id="chat-panel">
-  <div class="chat-header">
-    <div class="chat-avatar">🤖</div>
-    <div class="chat-header-info">
-      <strong>TechBot</strong>
-      <span>Assistente da Tech Week</span>
-    </div>
-    <button class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
-  </div>
-  <div class="chat-messages" id="chat-messages"></div>
-  <div class="chat-footer">
-    <input class="chat-input" id="chat-input" placeholder="Pergunte sobre o evento..." onkeydown="if(event.key==='Enter')sendMessage()">
-    <button class="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
-  </div>
-</div>
-
-<!-- COFFEE MODAL -->
-<div class="modal-overlay" id="coffee-modal">
-  <div class="modal-box">
-    <h3>Aviso Importante! ☕</h3>
-    <p>O Coffee Break é um momento especial para networking, e para que ele aconteça, cobramos um valor simbólico de participação.</p>
-    <p>Ao marcar esta opção, você <strong>se compromete a ajudar a pagar</strong> por essa taxa juntamente com os demais.</p>
-    <div class="modal-actions">
-      <button class="btn-secondary" onclick="cancelCoffee()">Cancelar</button>
-      <button class="btn-primary" onclick="confirmCoffee()">Eu concordo</button>
-    </div>
-  </div>
-</div>
-
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
-
-<script src="script.js"></script>
+  <script src="env.js"></script>
+  <script src="script.js"></script>
 
 </body>
+
 </html>
