@@ -1,115 +1,108 @@
-# Relatório de Testes e Qualidade (QA) - Tech Week
+# Relatório de Testes e Qualidade (QA) - Week Tech 
 
-**Alunos:** Pedro Lucas Silva Raimundo e Gabriel Dubinsck
+**Alunos:** Pedro Lucas Silva Raimundo e Gabriel Dubinski
 **Curso:** Engenharia de Software - UniCesumar
-**O que testei:** Front-end (HTML/CSS/JS) e Banco de Dados (Supabase).
+**O que testamos:** Front-end (HTML/CSS/JS) e Banco de Dados (Supabase).
 
 ---
 
-## Como eu fiz os testes
+## Como fizemos os testes
 
 Para ter certeza de que tudo estava funcionando bem, 
-eu não fiquei só olhando o código fonte. 
-Eu usei o site como se fosse um usuário real. 
-E também tentei "quebrar" os formulários de propósito.
+nós não ficamos só olhando o código fonte. 
+Utilizámos o site como se fôssemos um utilizador real 
+e também tentámos "quebrar" os formulários de propósito.
 
-* **Computador:** 
-  Testei no meu notebook usando o Google Chrome e o Edge. 
-  Usei bastante a ferramenta F12 (DevTools) 
-  para ver se aparecia algum erro no console enquanto eu clicava.
+* **Computador:** Testámos no notebook usando o Google Chrome e o Edge. 
+  Usámos bastante a ferramenta F12 (DevTools) 
+  para ver se aparecia algum erro no console enquanto clicávamos.
   
-* **Celular:** 
-  Abri o site no meu próprio celular para ver na prática. 
-  E também testei resoluções de telas menores 
+* **Telemóvel:** Abrimos o site nos nossos próprios aparelhos para ver na prática. 
+  Também testámos resoluções de ecrãs menores 
   pelo simulador do navegador.
 
 ---
 
 ## 1. Testando o JavaScript (Como o site reage)
 
-* **Números Animados:** 
-  Fui descendo a página devagar. 
-  O script de contagem só começou a rodar quando a seção apareceu. 
-  Isso foi muito bem feito pelo grupo, porque não pesa o site atoa.
+* **Números Animados:** Fomos descendo a página devagar. 
+  O script de contagem só começou a rodar quando a secção apareceu. 
+  Isso foi muito bem feito pelo grupo, porque não pesa o site à toa.
 
-* **Abas de Inscrição:** 
-  Fiquei clicando rápido entre as abas de Participante e Projeto. 
+* **Abas de Inscrição:** Ficámos a clicar rápido entre as abas de Participante e Projeto. 
   O código aguentou bem, trocando a página sem travar. 
-  Nenhum formulário ficou aparecendo por cima do outro.
+  Nenhum formulário ficou a aparecer por cima do outro.
 
-* **Menu Animado:** 
-  Rolei a página para ver o evento de rolagem do menu. 
-  Quando a tela desce um pouco, o fundo fica embaçado e escuro. 
+* **Menu Animado:** Rolámos a página para ver o evento de rolagem do menu. 
+  Quando o ecrã desce um pouco, o fundo fica embaçado e escuro. 
   O efeito visual ficou muito bonito e não deixou a rolagem pesada.
 
-* **Chatbot pelo Teclado:** 
-  Testei enviar mensagem apertando só o botão "Enter". 
-  O JavaScript reconheceu a tecla certinho, mandou a mensagem 
-  e já limpou a caixinha para eu digitar de novo.
+* **Chatbot pelo Teclado:** Testámos enviar mensagem carregando apenas no botão "Enter". 
+  O JavaScript reconheceu a tecla corretamente, enviou a mensagem 
+  e já limpou a caixinha para digitarmos de novo.
+
+* **Botão do Menu de Telemóvel (Hambúrguer):** Testámos o ícone de três riscos simulando um ecrã pequeno. 
+  O JavaScript ativou e desativou a abertura do menu perfeitamente. 
+  Clicámos várias vezes rápido e o menu abriu e fechou sem erros no layout.
+
+* **Perguntas Frequentes (FAQ):** Fomos à área do FAQ e testámos abrir e fechar várias perguntas. 
+  O script usou a função `toggleFaq` para reconhecer exatamente qual clicámos, 
+  expandindo a resposta certa e girando a seta de forma independente.
+
+* **Tempo de Desaparecimento dos Avisos (Toast):** Quando o sistema deu o aviso de "Preencha os campos", 
+  testámos se ele ia ficar travado no ecrã. 
+  O código usou um temporizador de 3,5 segundos. 
+  Foi um tempo ideal para ler o alerta antes de ele sumir sozinho.
+
+* **Primeira Mensagem do Chatbot:** Quando abrimos o chat pela primeira vez, 
+  o código fez uma verificação inteligente no histórico. 
+  Como não tinha nada lá, ele já injetou a saudação do "TechBot". 
+  Fechámos e abrimos de novo, e ele soube que não precisava duplicar a mensagem.
 
 ---
 
 ## 2. Testando o Banco de Dados (Supabase)
 
-* **Inscrição Real:** 
-  Preenchi meus dados de teste e cliquei para confirmar. 
-  Verifiquei lá no painel do Supabase e a informação gravou certo.
+* **Inscrição Real:** Preenchemos os nossos dados de teste e clicámos para confirmar. 
+  Verificámos no painel do Supabase e a informação foi gravada corretamente.
 
-* **Tentando Quebrar os Formulários:** 
-  Deixei os campos em branco de propósito e cliquei em enviar. 
-  O sistema me barrou na hora. 
-  O aviso de "Preencha os campos obrigatórios" subiu na tela.
-
-* **Login do Coordenador:** 
-  Tentei entrar no painel de Admin no fim da página com uma senha qualquer. 
-  O banco de dados bloqueou o acesso imediatamente, 
-  provando que o sistema de login está protegendo a área restrita.
-
-* **Teste sem Internet:** 
-  Desliguei meu Wi-Fi e tentei enviar um projeto. 
-  A página não quebrou (não deu crash). 
-  O código percebeu o erro e mostrou um aviso amigável de falha de conexão.
+* **Tentando Quebrar os Formulários:** Deixámos os campos em branco de propósito e clicámos em enviar. 
+  O sistema barrou-nos na hora. 
+  O aviso de "PREENCHA O NOME E O E-MAIL" apareceu no ecrã.
 
 ---
 
 ## 3. Testando o Visual e o Mobile (HTML/CSS)
 
-* **Logo da UniCesumar:** 
-  A nossa imagem original sumia no fundo escuro. 
+* **Logo da UniCesumar:** A nossa imagem original sumia no fundo escuro. 
   Mas com o filtro `invert(1)` no CSS, ela ficou toda branca. 
-  Isso salvou muito tempo da equipe, não precisou usar o Photoshop.
+  Isso poupou muito tempo à equipa, pois não precisámos de editar a imagem.
 
-* **Site no Celular:** 
-  Na tela pequena, o menu normal sumiu 
+* **Site no Telemóvel:** No ecrã pequeno, o menu normal sumiu 
   e deu lugar ao ícone de "três risquinhos". Ficou ótimo.
-  Os cards de palestrantes, que ficavam lado a lado, 
-  passaram a ficar um embaixo do outro no celular. 
-  Isso evitou que a tela ficasse com aquela barra de rolagem horizontal.
+  Os cartões de palestrantes, que ficavam lado a lado, 
+  passaram a ficar um por baixo do outro no telemóvel. 
+  Isso evitou a barra de rolagem horizontal.
 
-* **Links Externos:** 
-  Cliquei no link do mapa do Google. 
-  Ele abriu em uma nova aba corretamente, 
-  então a pessoa não perde a nossa página principal do evento.
+* **Links Externos:** Clicámos no link do mapa do Google. 
+  Ele abriu num novo separador corretamente, 
+  então o utilizador não perde a nossa página principal do evento.
 
 ---
 
-## 4. O que eu achei de erro e pedi pro grupo arrumar
+## 4. O que achámos de erro e pedimos para o grupo ajustar
 
-Durante os meus testes, peguei 1 probleminha de usabilidade. 
-Reuni com o pessoal e arrumamos antes de entregar:
+Durante os nossos testes, encontrámos alguns pontos de correção e pedimos à equipa para ajustar:
 
-1. **Erro no nome da rua:** 
-  estava com um erro no nome da rua, um erro no nome da rua onde se encontra a unicesumar
-porem solicitei para que isso fosse mudado, estava escrito "AV. guedner, 1610" mas o correto é 
-"AV. santa monica, 450", o link estava levando corretamente o usuario para a localização mas
-estava com esse erro.
+1. **Erro no endereço:** O endereço da UniCesumar estava incorreto no texto. 
+   Estava escrito "Av. Guedner, 1610", mas o correto para o campus de Londrina é "Av. Santa Mônica, 450". 
+   Apesar de o link do mapa estar certo, o texto precisava desta correção para não confundir o aluno.
 
 ---
 
 ## Conclusão Final
 
-O código que a equipe montou está excelente. 
-A conexão com o banco de dados tá tratando os erros de forma segura, 
-o layout se ajeita na tela do celular perfeitamente 
+O código que a equipa montou está excelente. 
+A ligação com o banco de dados está a tratar os erros de forma segura, 
+o layout ajusta-se perfeitamente ao ecrã do telemóvel 
 e os testes provaram que o projeto aguenta o uso do público. 
-O trabalho está pronto e aprovado para apresentar!
