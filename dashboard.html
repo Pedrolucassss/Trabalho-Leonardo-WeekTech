@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Week 2026 — Dashboard</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <a href="#" class="logo-row">
+        <div class="logo-icon"><i class="fas fa-microchip"></i></div>
+        <div>
+          <div class="logo-text">Tech<span>Week</span></div>
+          <div class="logo-sub">UniCesumar · Londrina</div>
+        </div>
+      </a>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Visão Geral</div>
+      <div class="nav-item active" onclick="setSection('dashboard')">
+        <i class="fas fa-chart-line"></i> Dashboard
+      </div>
+      <div class="nav-section">Inscrições</div>
+      <div class="nav-item" onclick="setSection('participantes');setTypeFilter('participante')">
+        <i class="fas fa-users"></i> Participantes <span class="nav-badge" id="nb-part">0</span>
+      </div>
+      <div class="nav-item" onclick="setSection('participantes');setTypeFilter('palestrante')">
+        <i class="fas fa-microphone"></i> Palestrantes <span class="nav-badge yellow" id="nb-pal">0</span>
+      </div>
+      <div class="nav-item" onclick="setSection('participantes');setTypeFilter('projeto')">
+        <i class="fas fa-lightbulb"></i> Projetos <span class="nav-badge" id="nb-proj"
+          style="background:rgba(168,85,247,0.15);color:#a855f7">0</span>
+      </div>
+      <div class="nav-section">Ferramentas</div>
+      <div class="nav-item" onclick="exportCSV()">
+        <i class="fas fa-download"></i> Exportar CSV
+      </div>
+      <div class="nav-item" onclick="clearAll()">
+        <i class="fas fa-trash-alt"></i> Limpar Dados
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="event-countdown">
+        <div class="days" id="countdown-days">—</div>
+        <div class="label">dias para o evento · 01/06 - 03/06/2026</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-title">Dashboard <span>Analítico</span></div>
+      <div class="topbar-filters" id="type-filters">
+        <button class="filter-btn active" onclick="setTypeFilter('all')">Todos</button>
+        <button class="filter-btn" onclick="setTypeFilter('participante')">Participantes</button>
+        <button class="filter-btn" onclick="setTypeFilter('palestrante')">Palestrantes</button>
+        <button class="filter-btn" onclick="setTypeFilter('projeto')">Projetos</button>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" onclick="sortTable()" title="Ordenar"><i class="fas fa-sort"></i></button>
+        <button class="icon-btn" onclick="toggleCoffeeFilter()" id="coffee-btn" title="Filtrar Coffee Break"><i
+            class="fas fa-coffee"></i></button>
+        <button class="export-btn" onclick="exportCSV()"><i class="fas fa-file-csv"></i> Exportar</button>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- KPIs -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-icon blue"><i class="fas fa-users"></i></div>
+          <div class="kpi-label">Total Inscrições</div>
+          <div class="kpi-value accent" id="kpi-total">0</div>
+          <div class="kpi-sub" id="kpi-total-sub">nenhuma inscrição ainda</div>
+        </div>
+        <div class="kpi-card yellow">
+          <div class="kpi-icon yellow"><i class="fas fa-user-graduate"></i></div>
+          <div class="kpi-label">Participantes</div>
+          <div class="kpi-value yellow" id="kpi-part">0</div>
+          <div class="kpi-sub" id="kpi-part-sub">— do total</div>
+        </div>
+        <div class="kpi-card green">
+          <div class="kpi-icon green"><i class="fas fa-coffee"></i></div>
+          <div class="kpi-label">Coffee Break</div>
+          <div class="kpi-value green" id="kpi-coffee">0</div>
+          <div class="kpi-sub" id="kpi-coffee-sub">confirmados</div>
+        </div>
+        <div class="kpi-card purple">
+          <div class="kpi-icon purple"><i class="fas fa-lightbulb"></i></div>
+          <div class="kpi-label">Projetos / Palestras</div>
+          <div class="kpi-value purple" id="kpi-projpal">0</div>
+          <div class="kpi-sub" id="kpi-projpal-sub">propostas recebidas</div>
+        </div>
+      </div>
+
+      <!-- CHARTS ROW 1 -->
+      <div class="charts-row">
+        <div class="chart-card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Inscrições ao Longo do Tempo</div>
+              <div class="card-subtitle">acúmulo por tipo de inscrição</div>
+            </div>
+            <span class="card-tag">Linha</span>
+          </div>
+          <div class="chart-legend" id="legend-time"></div>
+          <div style="position:relative;height:220px"><canvas id="chart-timeline" role="img"
+              aria-label="Gráfico de linha de inscrições ao longo do tempo">Nenhum dado ainda.</canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Distribuição por Tipo</div>
+              <div class="card-subtitle">proporção de inscrições</div>
+            </div>
+            <span class="card-tag">Donut</span>
+          </div>
+          <div class="chart-legend" id="legend-type"></div>
+          <div style="position:relative;height:200px"><canvas id="chart-donut" role="img"
+              aria-label="Gráfico donut de distribuição por tipo">Nenhum dado ainda.</canvas></div>
+        </div>
+      </div>
+
+      <!-- CHARTS ROW 2 -->
+      <div class="charts-row2">
+        <div class="chart-card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Cursos dos Participantes</div>
+              <div class="card-subtitle">top 5 cursos</div>
+            </div>
+          </div>
+          <div class="course-list" id="course-list">
+            <div
+              style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);padding:1rem 0;text-align:center">
+              sem dados</div>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Semestres</div>
+              <div class="card-subtitle">distribuição por semestre</div>
+            </div>
+          </div>
+          <div style="position:relative;height:170px"><canvas id="chart-sem" role="img"
+              aria-label="Barras de semestres">Nenhum dado.</canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Últimas Inscrições</div>
+              <div class="card-subtitle">atividade recente</div>
+            </div>
+          </div>
+          <div class="feed-list" id="feed-list">
+            <div class="table-empty" style="padding:1.5rem 0">sem inscrições</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABELA -->
+      <div class="table-card">
+        <div class="table-header">
+          <div class="card-title">Registro Completo</div>
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Buscar nome, email, RA..." id="search-input" oninput="renderTable()">
+          </div>
+          <div class="type-tabs" id="type-tabs">
+            <button class="type-tab active" onclick="setTypeFilter('all')">Todos</button>
+            <button class="type-tab" onclick="setTypeFilter('participante')">Participantes</button>
+            <button class="type-tab" onclick="setTypeFilter('palestrante')">Palestrantes</button>
+            <button class="type-tab" onclick="setTypeFilter('projeto')">Projetos</button>
+          </div>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Email / Contato</th>
+                <th>Detalhes</th>
+                <th>Horário</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+            </tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <span class="page-info" id="page-info">0 registros</span>
+          <div class="page-btns" id="page-btns"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="env.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="dashboard.js"></script>
+
+</body>
+
+</html>
