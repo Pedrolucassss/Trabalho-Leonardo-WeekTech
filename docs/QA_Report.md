@@ -13,12 +13,12 @@ eu não fiquei só olhando o código fonte.
 Eu usei o site como se fosse um usuário real. 
 E também tentei "quebrar" os formulários de propósito.
 
-* **No Computador:** 
+* **Computador:** 
   Testei no meu notebook usando o Google Chrome e o Edge. 
   Usei bastante a ferramenta F12 (DevTools) 
   para ver se aparecia algum erro no console enquanto eu clicava.
   
-* **No Celular:** 
+* **Celular:** 
   Abri o site no meu próprio celular para ver na prática. 
   E também testei resoluções de telas menores 
   pelo simulador do navegador.
@@ -95,25 +95,14 @@ E também tentei "quebrar" os formulários de propósito.
 
 ## 4. O que eu achei de erro e pedi pro grupo arrumar
 
-Durante os meus testes, peguei três probleminhas de usabilidade. 
+Durante os meus testes, peguei 1 probleminha de usabilidade. 
 Reuni com o pessoal e arrumamos antes de entregar:
 
-1. **Erro na caixinha do Coffee Break:** 
-   Se a pessoa clicasse na caixinha, ela já ficava marcada, 
-   mesmo antes do aluno concordar com o aviso financeiro. 
-   Fizemos o JS desmarcar a caixinha na mesma hora 
-   e só marcar de verdade se a pessoa clicar no botão "Eu concordo".
-
-2. **Chatbot saindo da tela:** 
-   Quando mandei um texto gigante sem dar espaços, a palavra vazou. 
-   Avisamos a equipe e colocamos uma regra no CSS 
-   para forçar o texto a quebrar a linha e não sair do balãozinho.
-
-3. **Problema pra clicar nos botões:** 
-   Aquela luz azul no fundo do título principal 
-   tava ficando por cima dos botões em alguns navegadores. 
-   Isso impedia o clique do mouse. 
-   Colocamos o código `pointer-events: none` na luz e resolveu.
+1. **Erro no nome da rua:** 
+  estava com um erro no nome da rua, um erro no nome da rua onde se encontra a unicesumar
+porem solicitei para que isso fosse mudado, estava escrito "AV. guedner, 1610" mas o correto é 
+"AV. santa monica, 450", o link estava levando corretamente o usuario para a localização mas
+estava com esse erro.
 
 ---
 
