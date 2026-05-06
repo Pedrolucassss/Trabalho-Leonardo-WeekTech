@@ -582,3 +582,68 @@ footer {
   .chat-panel { width: calc(100vw - 2rem); right: 1rem; bottom: 5.5rem; }
   .schedule-item { grid-template-columns: 1fr; }
 }
+
+/* Patrocinadores no Hero */
+.hero-sponsors {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  animation: slide-up 0.8s ease 0.5s both;
+}
+
+.hero-sponsors-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  opacity: 0.7;
+}
+
+.hero-sponsors-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.hero-sponsor-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.hero-sponsor-item:hover { color: var(--text); }
+
+.hero-sponsor-item.gold,
+.hero-sponsor-item.gold .sponsor-name { color: var(--accent3); }
+
+.hero-sponsor-item.silver,
+.hero-sponsor-item.silver .sponsor-name { color: #94a3b8; }
+
+.sponsor-stars { font-size: 0.6rem; opacity: 0.85; }
+
+.sponsor-name { font-weight: 700; }
+
+.hero-sponsor-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .hero-sponsors { margin-top: 2rem; padding-top: 1.5rem; }
+  .hero-sponsor-item { padding: 0.4rem 0.8rem; font-size: 0.7rem; }
+  .hero-sponsor-divider { height: 12px; }
+}
