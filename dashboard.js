@@ -5,6 +5,18 @@ const { createClient } = supabase;
 const sb = createClient(window.ENV.SUPABASE_URL, window.ENV.SUPABASE_KEY);
 
 // ═══════════════════════════════════════════════════
+//  GUARD — verifica sessão antes de mostrar qualquer coisa
+// ═══════════════════════════════════════════════════
+async function checkSession() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) {
+    // Sem sessão ativa → volta para o login
+    window.location.href = 'index.html#admin';
+  }
+}
+checkSession();
+
+// ═══════════════════════════════════════════════════
 //  STATE
 // ═══════════════════════════════════════════════════
 let registrations = [];
@@ -45,7 +57,7 @@ async function loadFromSupabase() {
           email:     row.email,
           curso:     row.curso,
           semestre:  row.semestre,
-          coffee:    row.coffee || false,   // coluna opcional — adicione no Supabase se quiser
+          coffee:    row.coffee || false,
         }
       });
     });
@@ -81,7 +93,6 @@ async function loadFromSupabase() {
       });
     });
 
-    // Ordena por data de criação
     registrations.sort((a, b) => a.time - b.time);
 
     refreshAll();
@@ -93,7 +104,7 @@ async function loadFromSupabase() {
 }
 
 // ═══════════════════════════════════════════════════
-//  REALTIME — atualiza automaticamente ao receber nova inscrição
+//  REALTIME
 // ═══════════════════════════════════════════════════
 function setupRealtime() {
   const handler = () => loadFromSupabase();
@@ -106,7 +117,7 @@ function setupRealtime() {
 }
 
 // ═══════════════════════════════════════════════════
-//  DELETE — remove do Supabase
+//  DELETE
 // ═══════════════════════════════════════════════════
 async function deleteEntry(id) {
   const entry = registrations.find(r => String(r.id) === String(id));
@@ -225,7 +236,6 @@ function updateKPIs() {
 }
 
 function updateCharts() {
-  // Timeline
   const sorted = [...registrations].sort((a, b) => a.time - b.time);
   const labels = [], partAcc = [], palAcc = [], projAcc = [];
   let cp = 0, cpal = 0, cproj = 0;
@@ -243,12 +253,10 @@ function updateCharts() {
   chartTimeline.data.datasets[2].data = projAcc;
   chartTimeline.update('none');
 
-  // Legends
   const tl = document.getElementById('legend-time');
   tl.innerHTML = [['Participantes','#00B1FF'],['Palestrantes','#FFCC00'],['Projetos','#a855f7']]
     .map(([l,c]) => `<span class="legend-item"><span class="legend-dot" style="background:${c}"></span>${l}</span>`).join('');
 
-  // Donut
   const pc   = registrations.filter(r => r.type === 'participante').length;
   const palc = registrations.filter(r => r.type === 'palestrante').length;
   const prc  = registrations.filter(r => r.type === 'projeto').length;
@@ -261,10 +269,8 @@ function updateCharts() {
     [`Projetos ${prc}`, prc, '#a855f7']
   ].map(([l,v,c]) => `<span class="legend-item"><span class="legend-dot" style="background:${c}"></span>${l} ${total > 0 ? '('+Math.round(v/total*100)+'%)' : ''}</span>`).join('');
 
-  // Semestres
   const semCounts = [0,0,0,0,0,0,0,0];
   registrations.filter(r => r.type === 'participante').forEach(r => {
-    // suporta "1º Semestre", "1", "1º" etc.
     const raw = String(r.data.semestre || '');
     const s = parseInt(raw.replace(/\D/g, ''));
     if (s >= 1 && s <= 8) semCounts[s - 1]++;
@@ -421,7 +427,7 @@ function exportCSV() {
 }
 
 // ═══════════════════════════════════════════════════
-//  CLEAR ALL (apenas local — não deleta do Supabase)
+//  CLEAR ALL
 // ═══════════════════════════════════════════════════
 function clearAll() {
   if (!registrations.length) { showToast('Nada para limpar.'); return; }

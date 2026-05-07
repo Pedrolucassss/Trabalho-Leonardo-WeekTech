@@ -53,18 +53,19 @@ window.toggleFaq = function (el) {
 }
 
 // TOAST
-window.showToast = function (msg) {
+window.showToast = function (msg, type = '') {
   const t = document.getElementById('toast');
   if (t) {
-    t.textContent = msg; t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 3500);
+    t.textContent = msg;
+    t.className = 'toast show ' + type;
+    setTimeout(() => t.className = 'toast', 3500);
   }
 }
 
 // COFFEE BREAK MODAL LOGIC
 window.handleCoffeeChange = function (el) {
   if (el.checked) {
-    el.checked = false; 
+    el.checked = false;
     const modal = document.getElementById('coffee-modal');
     if (modal) modal.classList.add('open');
   }
@@ -166,16 +167,37 @@ window.submitProjeto = async function () {
   }
 }
 
+// ── LOGIN ADMIN ──
 window.loginAdmin = async function () {
   if (!supabaseClient) return showToast('Erro de conexão! ⚠️');
-  const email = document.getElementById('admin-email').value;
-  const password = document.getElementById('admin-senha').value;
+
+  const email    = document.getElementById('admin-email')?.value?.trim();
+  const password = document.getElementById('admin-senha')?.value;
+  const btn      = document.querySelector('#admin .form-submit');
+
+  if (!email || !password) return showToast('Preencha e-mail e senha! ⚠️');
+
+  // Feedback visual no botão
+  if (btn) { btn.textContent = 'Entrando...'; btn.disabled = true; }
+
   try {
-    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+    const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+
     if (error) throw error;
-    showToast('Login realizado! 🔐');
+
+    showToast('Login realizado! Redirecionando... 🔐');
+    // Redireciona para o painel após 800ms (tempo do toast aparecer)
+    setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
+
   } catch (err) {
-    showToast('Erro no login! ❌');
+    // Mensagens de erro amigáveis
+    let msg = 'Erro no login! ❌';
+    if (err.message?.includes('Invalid login credentials')) msg = 'E-mail ou senha incorretos! ❌';
+    if (err.message?.includes('Email not confirmed'))       msg = 'E-mail ainda não confirmado! Verifique sua caixa de entrada.';
+    if (err.message?.includes('Too many requests'))         msg = 'Muitas tentativas. Aguarde alguns minutos.';
+    showToast(msg);
+  } finally {
+    if (btn) { btn.textContent = 'Entrar no Painel'; btn.disabled = false; }
   }
 }
 
@@ -188,7 +210,7 @@ window.toggleChat = function () {
   document.getElementById('chat-panel').classList.toggle('open', chatOpen);
   const notif = document.querySelector('.chat-bubble .notif');
   if (notif) notif.style.display = 'none';
-  
+
   if (chatOpen && document.getElementById('chat-messages').children.length === 0) {
     addMessage('bot', 'Olá! 👋 Sou o TechBot. Como posso te ajudar com a Tech Week?');
   }
