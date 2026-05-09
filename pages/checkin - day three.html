@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check-in - Day Three</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/checkin.css">
+  <script src="../js/env.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">
+    <div class="logo-icon">📅</div>
+    <div>
+      <div class="logo-text">Tech<span>Week</span></div>
+      <div class="logo-sub">UniCesumar · Londrina · 03/06/2026</div>
+    </div>
+  </div>
+
+  <h1>Check-in <span>de Presença</span></h1>
+  <div class="subtitle">// digite o RA do participante para confirmar</div>
+
+  <div class="input-group">
+    <label>Registro Acadêmico (RA)</label>
+    <input
+      type="text"
+      id="ra-input"
+      placeholder="ex: 12345678"
+      maxlength="20"
+      autocomplete="off"
+      autofocus
+    >
+  </div>
+
+  <button class="btn" id="btn-checkin" onclick="doCheckin()">
+    <span id="btn-label">✓ Confirmar Presença</span>
+    <div class="spinner" id="spinner"></div>
+  </button>
+
+  <div class="feedback" id="feedback">
+    <div class="feedback-icon" id="fb-icon"></div>
+    <div class="feedback-title" id="fb-title"></div>
+    <div class="feedback-name" id="fb-name"></div>
+    <div class="feedback-sub" id="fb-sub"></div>
+  </div>
+
+  <div class="counter">
+    <div>
+      <div class="counter-label">Presenças confirmadas</div>
+      <div class="counter-total" id="counter-total">de — cadastrados</div>
+    </div>
+    <div class="counter-value" id="counter-value">—</div>
+  </div>
+
+  <div class="log-section">
+    <div class="log-title">// últimas confirmações</div>
+    <div class="log-list" id="log-list">
+      <div style="font-family:var(--mono);font-size:0.7rem;color:var(--text-dim);padding:0.5rem 0">nenhuma ainda</div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/checkin-day-three.js"></script>
+</body>
+</html>
