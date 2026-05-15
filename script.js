@@ -18,7 +18,7 @@ window.addEventListener('scroll', () => {
 
 // STATS COUNTER
 const counters = document.querySelectorAll('.stat-num');
- const countUp = (el) => {
+const countUp = (el) => {
   const target = +el.dataset.target;
   const duration = 1500;
   const step = target / (duration / 16);
@@ -29,6 +29,13 @@ const counters = document.querySelectorAll('.stat-num');
     else el.textContent = Math.floor(current);
   }, 16);
 };
+const statsBar = document.querySelector('.stats-bar');
+if (statsBar) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { counters.forEach(countUp); observer.disconnect(); } });
+  }, { threshold: 0.5 });
+  observer.observe(statsBar);
+}
 
 // TABS
 window.switchTab = function (id) {
@@ -46,19 +53,18 @@ window.toggleFaq = function (el) {
 }
 
 // TOAST
-window.showToast = function (msg, type = '') {
+window.showToast = function (msg) {
   const t = document.getElementById('toast');
   if (t) {
-    t.textContent = msg;
-    t.className = 'toast show ' + type;
-    setTimeout(() => t.className = 'toast', 3500);
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
   }
 }
 
 // COFFEE BREAK MODAL LOGIC
 window.handleCoffeeChange = function (el) {
   if (el.checked) {
-    el.checked = false;
+    el.checked = false; 
     const modal = document.getElementById('coffee-modal');
     if (modal) modal.classList.add('open');
   }
@@ -160,37 +166,16 @@ window.submitProjeto = async function () {
   }
 }
 
-// ── LOGIN ADMIN ──
 window.loginAdmin = async function () {
   if (!supabaseClient) return showToast('Erro de conexão! ⚠️');
-
-  const email    = document.getElementById('admin-email')?.value?.trim();
-  const password = document.getElementById('admin-senha')?.value;
-  const btn      = document.querySelector('#admin .form-submit');
-
-  if (!email || !password) return showToast('Preencha e-mail e senha! ⚠️');
-
-  // Feedback visual no botão
-  if (btn) { btn.textContent = 'Entrando...'; btn.disabled = true; }
-
+  const email = document.getElementById('admin-email').value;
+  const password = document.getElementById('admin-senha').value;
   try {
-    const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
-
+    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
     if (error) throw error;
-
-    showToast('Login realizado! Redirecionando... 🔐');
-    // Redireciona para o painel após 800ms (tempo do toast aparecer)
-    setTimeout(() => { window.location.href = '/pages/dashboard.html'; }, 800);
-
+    showToast('Login realizado! 🔐');
   } catch (err) {
-    // Mensagens de erro amigáveis
-    let msg = 'Erro no login! ❌';
-    if (err.message?.includes('Invalid login credentials')) msg = 'E-mail ou senha incorretos! ❌';
-    if (err.message?.includes('Email not confirmed'))       msg = 'E-mail ainda não confirmado! Verifique sua caixa de entrada.';
-    if (err.message?.includes('Too many requests'))         msg = 'Muitas tentativas. Aguarde alguns minutos.';
-    showToast(msg);
-  } finally {
-    if (btn) { btn.textContent = 'Entrar no Painel'; btn.disabled = false; }
+    showToast('Erro no login! ❌');
   }
 }
 
@@ -203,7 +188,7 @@ window.toggleChat = function () {
   document.getElementById('chat-panel').classList.toggle('open', chatOpen);
   const notif = document.querySelector('.chat-bubble .notif');
   if (notif) notif.style.display = 'none';
-
+  
   if (chatOpen && document.getElementById('chat-messages').children.length === 0) {
     addMessage('bot', 'Olá! 👋 Sou o TechBot. Como posso te ajudar com a Tech Week?');
   }
@@ -227,67 +212,5 @@ window.sendMessage = async function () {
   input.value = '';
 
   addMessage('user', text);
-
-  const typing = addMessage('bot', '...');
-  await new Promise(r => setTimeout(r, 600));
-
-  const reply = getBotReply(text);
-  if (typing) typing.textContent = reply;
+  // Lógica do chatbot pode ser expandida aqui
 }
-
-function getBotReply(text) {
-  const t = text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
-  if (/(oi|ola|hey|bom dia|boa tarde|boa noite|tudo bem|tudo bom)/.test(t))
-    return 'Olá! 👋 Sou o TechBot da Tech Week UniCesumar. Como posso te ajudar?';
-
-  if (/(quando|data|dia|periodo)/.test(t))
-    return '📅 A Tech Week acontece de 01 a 03 de junho de 2026 em Londrina - PR, na UniCesumar!';
-
-  if (/(onde|local|lugar|endereco|localizacao)/.test(t))
-    return '📍 O evento será na UniCesumar Londrina - PR. Fique de olho no site para mais detalhes!';
-
-  if (/(inscri|participar|inscrever|cadastrar|entrar)/.test(t))
-    return '📝 Para se inscrever, preencha o formulário de participante aqui no site na seção "Quero Participar"!';
-
-  if (/(palestra|palestrante|speaker)/.test(t))
-    return '🎤 Teremos 12+ palestras incríveis! Confira a programação completa na seção "Programação" do site.';
-
-  if (/(workshop|oficina)/.test(t))
-    return '🛠️ São 8+ workshops práticos durante o evento. Veja os detalhes na aba de programação!';
-
-  if (/(projeto|exposi|feira)/.test(t))
-    return '💡 Você pode cadastrar seu projeto na seção "Projetos" do site e expô-lo durante o evento!';
-
-  if (/(coffee|lanche|comida|alimenta)/.test(t))
-    return '☕ Sim, haverá coffee break durante o evento! Você pode indicar sua preferência no formulário de inscrição.';
-
-  if (/(certificado|certificacao|horas|hora)/.test(t))
-    return '📜 A participação na Tech Week gera horas complementares. Mais detalhes serão divulgados em breve!';
-
-  if (/(gratis|gratuito|pago|valor|preco|custo)/.test(t))
-    return '🎟️ O evento é gratuito para alunos da UniCesumar! Basta se inscrever no site.';
-
-  if (/(programacao|agenda|horario|schedule)/.test(t))
-    return '📋 Confira a programação completa na seção "Programação" do site, com todos os horários e atividades!';
-
-  if (/(contato|email|telefone|falar|duvida)/.test(t))
-    return '📬 Para mais informações, entre em contato através do e-mail ou redes sociais da organização!';
-
-  if (/(obrigad|valeu|thanks|grato)/.test(t))
-    return 'De nada! 😊 Se tiver mais dúvidas, é só perguntar!';
-
-  if (/(tchau|ate logo|ate mais|bye)/.test(t))
-    return 'Até logo! 👋 Nos vemos na Tech Week 2026! 🚀';
-
-  return '🤔 Não tenho essa informação no momento. Tente perguntar sobre datas, inscrições, palestras, workshops ou projetos da Tech Week!';
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const chatInput = document.getElementById('chat-input');
-  if (chatInput) {
-    chatInput.addEventListener('keydown', e => {
-      if (e.key === 'Enter') window.sendMessage();
-    });
-  }
-});

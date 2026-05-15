@@ -11,11 +11,7 @@ async function checkSession() {
   const { data: { session } } = await sb.auth.getSession();
   if (!session) {
     // Sem sessão ativa → volta para o login
-<<<<<<< HEAD
     window.location.href = 'index.html#admin';
-=======
-    window.location.href = '../index.html#admin';
->>>>>>> b323be5b3cf83bc62515196f1c97ae881b094dcb
   }
 }
 checkSession();
@@ -462,29 +458,17 @@ setupRealtime();
 // ═══════════════════════════════════════════════════
 const QR_CODES = {
   1: {
-<<<<<<< HEAD
     img:      '../assets/checkin1.jpg',   // ← cole a URL da imagem do QR Code do Dia 1
-=======
-    img:      'URL_DA_IMAGEM_QR_DIA_1_AQUI',   // ← cole a URL da imagem do QR Code do Dia 1
->>>>>>> b323be5b3cf83bc62515196f1c97ae881b094dcb
     label:    'DIA 1',
     subtitle: '01 de Junho · UniCesumar Londrina',
   },
   2: {
-<<<<<<< HEAD
     img:      '../assets/checkin2.jpg',   // ← cole a URL da imagem do QR Code do Dia 2
-=======
-    img:      'URL_DA_IMAGEM_QR_DIA_2_AQUI',   // ← cole a URL da imagem do QR Code do Dia 2
->>>>>>> b323be5b3cf83bc62515196f1c97ae881b094dcb
     label:    'DIA 2',
     subtitle: '02 de Junho · UniCesumar Londrina',
   },
   3: {
-<<<<<<< HEAD
     img:      '../assets/checkin3.jpg',   // ← cole a URL da imagem do QR Code do Dia 3
-=======
-    img:      'URL_DA_IMAGEM_QR_DIA_3_AQUI',   // ← cole a URL da imagem do QR Code do Dia 3
->>>>>>> b323be5b3cf83bc62515196f1c97ae881b094dcb
     label:    'DIA 3',
     subtitle: '03 de Junho · UniCesumar Londrina',
   },

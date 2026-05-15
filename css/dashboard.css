@@ -157,7 +157,6 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 
-<<<<<<< HEAD
 /* HAMBURGUER */
 .sidebar-toggle{
   display:none;
@@ -189,11 +188,6 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   .sidebar-toggle{display:flex}
   .topbar-filters{display:none}
 }
-=======
-/* RESPONSIVE */
-@media(max-width:1200px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.charts-row{grid-template-columns:1fr}.charts-row2{grid-template-columns:1fr 1fr}}
-@media(max-width:900px){.sidebar{transform:translateX(-100%)}.main{margin-left:0}.charts-row2{grid-template-columns:1fr}.mini-row{grid-template-columns:1fr}}
->>>>>>> b323be5b3cf83bc62515196f1c97ae881b094dcb
 /* ── QR CODE MODAL ─────────────────────────────────── */
 .qr-overlay {
   position: fixed; inset: 0; z-index: 200;
